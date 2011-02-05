@@ -1,0 +1,8 @@
+This is an iOS project which demonstrates the usage of the SCWaveAnimationView. I had more than one project where I needed to give some visual feedback on the touches especially in conjunction with TVOut support.
+Just compile and run. Then you can play with the different configuration settings of the wave animation.
+
+The SCWaveAnimationView.m normally just uses the preprocessor defines for the different configuration values. I have introduced the global variable storage just for the sake of this demo app. I recommend you revert back to using the defines if you plan to include this in any of your projects.
+
+These classes are public domain. No attribution, no nothing. Have fun.
+
+(Provided as is. No warranty expressed or implied whatsoever. Blah-blah ... usual legal stuff...)
