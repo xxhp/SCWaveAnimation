@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0BB46D0212FEB5500016D813 /* SCGradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BB46D0112FEB5500016D813 /* SCGradientButton.m */; };
 		0BF44C0912FD3F2D0006E9DC /* SCWaveAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF44C0812FD3F2D0006E9DC /* SCWaveAnimationView.m */; };
 		0BF44C1512FD4A750006E9DC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF44C1412FD4A750006E9DC /* QuartzCore.framework */; };
 		0BF44C8712FD58120006E9DC /* Globals.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF44C8612FD58120006E9DC /* Globals.m */; };
@@ -21,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0BB46D0012FEB5500016D813 /* SCGradientButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCGradientButton.h; sourceTree = "<group>"; };
+		0BB46D0112FEB5500016D813 /* SCGradientButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCGradientButton.m; sourceTree = "<group>"; };
 		0BF44C0712FD3F2D0006E9DC /* SCWaveAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCWaveAnimationView.h; sourceTree = "<group>"; };
 		0BF44C0812FD3F2D0006E9DC /* SCWaveAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCWaveAnimationView.m; sourceTree = "<group>"; };
 		0BF44C1412FD4A750006E9DC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -69,6 +72,8 @@
 				28D7ACF70DDB3853001CB0EB /* SCWaveAnimationViewController.m */,
 				0BF44C8512FD58120006E9DC /* Globals.h */,
 				0BF44C8612FD58120006E9DC /* Globals.m */,
+				0BB46D0012FEB5500016D813 /* SCGradientButton.h */,
+				0BB46D0112FEB5500016D813 /* SCGradientButton.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -189,6 +194,7 @@
 				28D7ACF80DDB3853001CB0EB /* SCWaveAnimationViewController.m in Sources */,
 				0BF44C0912FD3F2D0006E9DC /* SCWaveAnimationView.m in Sources */,
 				0BF44C8712FD58120006E9DC /* Globals.m in Sources */,
+				0BB46D0212FEB5500016D813 /* SCGradientButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -21,11 +21,17 @@
 @implementation SCWaveLayer
 @synthesize parentView;
 
+- (void)dealloc
+{
+    [self removeAllAnimations];
+    [super dealloc];
+}
+
 - (void)drawInContext:(CGContextRef)theContext
 {
-	CGContextSetRGBStrokeColor(theContext, 255, 0, 0, 1.0);
+    CGContextSetRGBStrokeColor(theContext, 255, 0, 0, 1.0);
     CGContextSetLineWidth(theContext, 1.5f);
-	CGContextStrokeEllipseInRect(theContext, CGRectMake(self.bounds.size.width/2-([[Globals sharedGlobals] spawnSize]/2), self.bounds.size.height/2-([[Globals sharedGlobals] spawnSize]/2), [[Globals sharedGlobals] spawnSize], [[Globals sharedGlobals] spawnSize]));
+    CGContextStrokeEllipseInRect(theContext, CGRectMake(self.bounds.size.width/2-([[Globals sharedGlobals] spawnSize]/2), self.bounds.size.height/2-([[Globals sharedGlobals] spawnSize]/2), [[Globals sharedGlobals] spawnSize], [[Globals sharedGlobals] spawnSize]));
 }
 
 - (void) startAnimation
@@ -66,26 +72,29 @@
 @implementation SCWaveAnimationView
 
 - (void)dealloc {
+    [timer invalidate];
+    [[self.layer sublayers] makeObjectsPerformSelector:@selector(setParentView:) withObject:nil];
     [super dealloc];
 }
 
 + (void) waveAnimationAtPosition:(CGPoint)position
 {
-	SCWaveAnimationView* waveAnimationView = [[self alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-	[waveAnimationView setCenter:position];
-	[[[UIApplication sharedApplication] keyWindow] addSubview:waveAnimationView];
+	[self waveAnimationAtPosition:position forView:[[UIApplication sharedApplication] keyWindow]];
 }
 
 + (void) waveAnimationAtPosition:(CGPoint)position forView:(UIView*)view
 {
-	SCWaveAnimationView* waveAnimationView = [[self alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+	SCWaveAnimationView* waveAnimationView = [[[self alloc] initWithFrame:CGRectMake(0, 0, 100, 100)] autorelease];
 	[waveAnimationView setCenter:position];
-	[view addSubview:waveAnimationView];
+	if (nil != view) {
+		[view addSubview:waveAnimationView];
+	}
 }
 
 - (id)initWithFrame:(CGRect)frame
 {
-    if (self = [super initWithFrame:frame]) {
+    self = [super initWithFrame:frame];
+    if (self) {
 		wavesSpawned = 0;
 		wavesDone = 0;
 
@@ -102,7 +111,11 @@
 #endif
 		[self spawnWave];
 		if (1<[[Globals sharedGlobals] numberOfWaves]) {
-			timer = [NSTimer scheduledTimerWithTimeInterval:[[Globals sharedGlobals] spawnInterval] target:self selector:@selector(spawnWave) userInfo:nil repeats:YES];
+            double spawnInterval = [[Globals sharedGlobals] spawnInterval];
+            if (!spawnInterval > kAnimationDuration*1.25) {
+                spawnInterval = kAnimationDuration*1.25;
+            }
+            timer = [NSTimer scheduledTimerWithTimeInterval:spawnInterval target:self selector:@selector(spawnWave) userInfo:nil repeats:YES];
 		}
     }
     return self;
